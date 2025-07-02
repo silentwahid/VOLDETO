@@ -73,23 +73,49 @@
     }
 
     /* Mobile Menu */
-    @media (max-width:768px) {
-      .menu { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--black); flex-direction: column; padding: 1rem 2rem; gap: 1rem; }
-      .burger { display: flex; }
+   @media (max-width:768px) {
+  .menu { 
+    margin: 50% 0;
+    display: none; 
+    position: absolute; 
+    top: 60px; left: 0; right: 0; 
+    background: var(--black); 
+    flex-direction: column; 
+    padding: 1rem 2rem; 
+    gap: 1rem; 
+  }
+  .burger { display: flex; }
 
-      nav.active .menu {
-        display: flex;
-      }
-      nav.active .burger span:nth-child(1) {
-        transform: rotate(45deg) translate(5px,5px);
-      }
-      nav.active .burger span:nth-child(2) {
-        opacity: 0;
-      }
-      nav.active .burger span:nth-child(3) {
-        transform: rotate(-45deg) translate(6px,-6px);
-      }
-    }
+  nav.active .menu {
+    display: flex;
+  }
+  nav.active .burger span:nth-child(1) {
+    transform: rotate(45deg) translate(5px,5px);
+  }
+  nav.active .burger span:nth-child(2) {
+    opacity: 0;
+  }
+  nav.active .burger span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px,-6px);
+  }
+
+  .footer-wrap { 
+    flex-direction: column; 
+    align-items: center; 
+  }
+  .footer-column { 
+    text-align: center; 
+  }
+
+  /* 👇 Center and enlarge "Coming Soon" text on mobile */
+  main {
+    padding: 3rem 1rem;
+  }
+  h1 {
+    font-size: 20vw; /* larger for small screens */
+  }
+}
+
 
     /* Hero */
     main {
@@ -98,7 +124,7 @@
       text-align: center;
     }
     h1 {
-      font-size: 5vw;
+      font-size: 300%;
       animation: glow 2s ease-in-out infinite alternate;
     }
     @keyframes glow {
@@ -166,11 +192,11 @@
       <a href="#contact">Contact</a>
     </div>
   </nav>
-
+<br><br><br><br><br><br><br><br>
   <main id="home">
     <h1>Coming Soon</h1>
   </main>
-
+<br><br><br><br><br><br><br><br><br><br>
   <footer>
     <div class="footer-wrap">
       <div class="footer-column">
