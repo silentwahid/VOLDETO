@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOLDETO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="LOGO.png" type="image/x-icon">
+  <style>
+    :root {
+      --black: #ffffff;
+      --white: #0a0A0A;
+      --gray: #444444;
+      --light-gray: #888888;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex; flex-direction: column;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* Navbar */
+    nav {
+      background: var(--black);
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      position: relative;
+      z-index: 100;
+    }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+    .menu {
+      display: flex; gap: 1.5rem;
+    }
+    .menu a {
+      font-weight: 500;
+      transition: color .3s, transform .3s;
+    }
+    .menu a:hover {
+      color: var(--light-gray);
+      transform: translateY(-2px);
+    }
+    .burger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .burger span {
+      width: 25px;
+      height: 3px;
+      background: var(--white);
+      transition: all .3s;
+    }
+    .cta {
+      background: var(--white);
+      color: var(--black);
+      padding: .5rem 1rem;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: transform .3s;
+    }
+    .cta:hover {
+      transform: scale(1.05);
+    }
+
+    /* Mobile Menu */
+    @media (max-width:768px) {
+      .menu { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--black); flex-direction: column; padding: 1rem 2rem; gap: 1rem; }
+      .burger { display: flex; }
+
+      nav.active .menu {
+        display: flex;
+      }
+      nav.active .burger span:nth-child(1) {
+        transform: rotate(45deg) translate(5px,5px);
+      }
+      nav.active .burger span:nth-child(2) {
+        opacity: 0;
+      }
+      nav.active .burger span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px,-6px);
+      }
+    }
+
+    /* Hero */
+    main {
+      flex: 1;
+      display: flex; justify-content: center; align-items: center;
+      text-align: center;
+    }
+    h1 {
+      font-size: 5vw;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px var(--gray); }
+      to { text-shadow: 0 0 20px var(--light-gray); }
+    }
+
+    /* Footer */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--gray);
+      padding: 2rem;
+    }
+    .footer-wrap {
+      display: flex; flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1000px; margin: auto;
+      gap: 2rem;
+    }
+    .footer-column {
+      flex: 1 1 200px;
+    }
+    .footer-column h4 {
+      margin-bottom: .8rem;
+      font-size: 1.1rem;
+    }
+    .footer-column a, .footer-column p {
+      font-size: .95rem;
+      color: var(--light-gray);
+      margin-bottom: .4rem;
+      display: block;
+      transition: color .3s;
+    }
+    .footer-column a:hover {
+      color: var(--white);
+    }
+    .social {
+      display: flex; gap: 1rem;
+      margin-top: .6rem;
+    }
+    .bottom {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: .85rem;
+      color: var(--gray);
+    }
+
+    @media (max-width:768px) {
+      .footer-wrap { flex-direction: column; align-items: center; }
+      .footer-column { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="nav">
+    <div class="logo"><img style="width: 50%; margin: 20px;" src="logo.png" alt=""></div>
+    <div class="burger" onclick="navToggle()">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="menu">
+      <a href="#home">Accueil</a>
+      <a href="#services">Services</a>
+      <a href="#about">À propos</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main id="home">
+    <h1>Coming Soon</h1>
+  </main>
+
+  <footer>
+    <div class="footer-wrap">
+      <div class="footer-column">
+        <h4>Navigation</h4>
+        <a href="#home">Accueil</a>
+        <a href="#services">Services</a>
+        <a href="#about">À propos</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <p>Email : voldetocontact@gmail.com</p>
+        <p>Tél : +213664722000 <br>     +213557629835</p>
+      </div>
+      <div class="footer-column">
+        <h4>Suivez-nous</h4>
+        <div class="social">
+             <a href="https://www.tiktok.com/@voldeto.ee"><i class="fab fa-tiktok"></i></a>
+             <a href="https://www.instagram.com/voldeto/"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">© 2025 SilentWahid. Tous droits réservés.</div>
+  </footer>
+
+  <script>
+    function navToggle(){
+      document.getElementById('nav').classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>
