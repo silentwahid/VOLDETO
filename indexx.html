@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Sliding with Swipe</title>
+    <style>
+        body {
+            margin: 0;
+            text-decoration: none;
+            font-family: calson  bold;
+        }
+        a{
+          text-decoration: none;
+          color: #000000;
+
+        }
+  
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: auto;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .txt {
+            position: absolute; 
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .txt p {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .txt h2 {
+            margin: 10px 0;
+            font-size: 60px;
+            color: white;
+        }
+
+        .txt a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            background-color: #000000;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .txt a:hover {
+            background-color: #1a1a1a;
+            transition: 0.7s ease;
+        }
+
+        /* Products Section */
+        .products-container {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        .products {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .product {
+            margin: 15px;
+            flex: none;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Navigation Buttons */
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 18px;
+            z-index: 10;
+        }
+
+        .nav-button.left {
+            left: 10px;
+        }
+
+        .nav-button.right {
+            right: 10px;
+        }
+
+        /* Hide buttons on larger screens */
+        @media (min-width: 768px) {
+            .nav-button {
+                display: none;
+            }
+        }
+        
+
+
+         /* Responsive adjustments */
+         @media (max-width: 768px) {
+            .txt {
+                left: 5%;
+                padding: 15px;
+                max-width: 250px;
+            }
+
+            .txt h2 {
+                font-size: 28px;
+            }
+
+            .txt p {
+                font-size: 16px;
+            }
+
+            .txt a {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .txt {
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                max-width: 90%;
+            }
+
+            .txt h2 {
+                font-size: 24px;
+            }
+
+            .txt p {
+                font-size: 14px;
+            }
+
+            .txt a {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+        }
+
+
+        @keyframes appear {
+          from {
+            opacity: 0;
+            scale: 0.5;
+          }
+          to{
+            opacity: 1;
+            scale: 1;
+
+          }
+        }
+        .products-container{
+          animation: appear linear;
+          animation-timeline: view();
+          animation-range: entry 0%;
+        }
+        .prm{
+          text-decoration-line: line-through;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div style="font-family: ITC Garamond Std;
+    font-style: italic;
+    font-weight: 400;" 
+     class="container">
+
+        <img src="https://voldeto.shop/wp-content/uploads/2025/02/photo_2025-02-24_14-13-09.jpg" alt="Exclusive Products">
+        <div class="txt">
+            <p style="font-size: 30px;">OPENING</p>
+            <h2 style="font-size: 40px;">OUR STORE</h2>
+            <a href="https://voldeto.shop/our-store/">SEE NOW</a>
+        </div>
+    </div>
+
+
+<!----
+    <div class="container">
+        <img src="https://voldeto.shop/wp-content/uploads/2024/12/169-PHOTO-1-scaled.jpg" alt="Exclusive Products">
+        <div class="txt">
+            <p>EXCLUSIVE PRODUCTS</p>
+            <h2>VOLDETO</h2>
+            <a href="https://voldeto.shop/products/?v=d3b4897cfeaf">SHOP NOW</a>
+        </div>
+    </div>
+
+
+  -->
+
+    <div class="products-container">
+
+        <button class="nav-button left">&lt;</button>
+        <div class="products">
+            <div class="product"><a href="https://voldeto.shop/product/zipper-jacket-v2/?v=d3b4897cfeaf">
+                <img src="https://voldeto.shop/wp-content/uploads/2025/02/DSC03355-scaled.jpg" alt="">
+                <p>voldeto</p>
+                <h4>ZIPPER JACKET V2</h4>
+                <h5>5000 DA</h5>
+            </a>
+              
+            </div>
+           
+            <div class="product">
+              <a href="https://voldeto.shop/product/shirt-jackect/?v=d3b4897cfeaf">
+                 <img src="https://voldeto.shop/wp-content/uploads/2024/12/DSC03063-2-1-scaled.jpg" alt="">
+                <p>voldeto</p>
+                <h4>SHIRT JACKET </h4>
+                <h5>5500 DA</h5>
+              </a>
+               
+            </div>
+ <div class="product">
+              <a href="https://voldeto.shop/product/zipper-jacket-v1/?v=d3b4897cfeaf">
+                   <img src="https://voldeto.shop/wp-content/uploads/2024/12/DSC03123Z458-.jpg" alt="">
+                <p>voldeto</p>
+                <h4>ZIPPER JACKET V1 (OUT OF STOCK) </h4>
+                <h5>6500 DA</h5> 
+              </a>
+            
+            </div>
+
+<!---
+            <div class="product">
+                <img src="https://voldeto.shop/wp-content/uploads/2025/02/DSC03355-scaled.jpg" alt="">
+                <p>voldeto</p>
+                <h4>zipper jacket</h4>
+                <h5>5000 DA</h5>
+            </div>
+
+          -->
+        </div>
+        <button class="nav-button right">&gt;</button>
+    </div>
+    <!-- women section -->
+
+
+
+    <div class="container">
+        <img src="https://voldeto.shop/wp-content/uploads/2024/12/169-photo-2-1024x576.jpg" alt="Exclusive Products">
+        <div class="txt">
+            <p>COLLECTION FEMME</p>
+            <h2>VOLDETO</h2>
+            <a href="https://voldeto.shop/femme/?v=d3b4897cfeaf">SHOP NOW</a>
+        </div>
+    </div>
+
+    <div class="products-container">
+        <button class="nav-button left">&lt;</button>
+        <div class="products">
+            <div class="product">
+              <a href="https://voldeto.shop/product/voldeto-beltedcoat/?v=d3b4897cfeaf">
+                     <img src="https://voldeto.shop/wp-content/uploads/2024/12/DSC01086-2-scaled.jpg" alt="">
+                <p>voldeto</p>
+                <h4>VOLDETO BELTEDCOAT   </h4>
+                <h5>6000 DA</h5> 
+              </a>
+          
+            </div>
+            <div class="product">
+              <a href="https://voldeto.shop/product/voldeto-overcoat/?v=d3b4897cfeaf">
+                    <img src="https://voldeto.shop/wp-content/uploads/2024/12/DSC01096-2-scaled.jpg" alt="">
+                <p>voldeto</p>
+                <h4>VOLDETO OVERCOAT  </h4>
+                <h5>7000 DA</h5> 
+              </a>
+           
+            </div>
+
+<!---
+
+            <div class="product">
+                <img src="https://voldeto.shop/wp-content/uploads/2024/11/photo_2024-11-01_01-03-10-edited.jpg" alt="">
+                <p>voldeto</p>
+                <h4>zipper jacket</h4>
+                <h5>5000 DA</h5>
+            </div>
+            <div class="product">
+                <img src="https://voldeto.shop/wp-content/uploads/2024/11/photo_2024-11-01_01-03-10-edited.jpg" alt="">
+                <p>voldeto</p>
+                <h4>zipper jacket</h4>
+                <h5>5000 DA</h5>
+            </div>
+
+          -->
+
+        </div>
+        <button class="nav-button right">&gt;</button>
+    </div>
+
+
+    <!------------------------------                  footer                     ----------------------------------->
+
+
+    <div class="logo"> 
+        <img src="https://voldeto.shop/wp-content/uploads/2024/12/logo.png" >
+      </div>
+      <div class="second-info">
+        <div class="algnitm">
+          <img class="icon" src="https://voldeto.shop/wp-content/uploads/2024/12/van-icon.png" alt=""><p>LIVRAISON 58 WILAYA</p>
+        </div>
+        <div class="algnitm">
+          <img class="icon" src="https://voldeto.shop/wp-content/uploads/2024/12/paiement-a-la-livraison.png" alt=""><p>PAYEMENT A LA LIVRAISON</p>
+        </div>
+        <div class="algnitm">
+          <img class="icon" src="https://voldeto.shop/wp-content/uploads/2024/12/protection.png" alt=""><p>SUPPORT 24/7</p>
+        </div>
+        
+    
+      </div>
+
+
+
+    <div class="rfooter" >
+        <section class="contact">
+      
+          
+          <div class="contact-info">
+            <div class="firstinfo" style="text-align: center;">
+              
+           
+              <p style="text-align: center;">Contact <br></p>
+              <div class="fitxt" >       
+               <p>
+                <img style="margin-right: 15px;" src="https://cdn.shopify.com/s/files/1/0884/1530/6033/files/phone.png?v=1721085412" alt="">0557629835
+               </p>
+               <p><img style="margin-right: 15px;" src="https://cdn.shopify.com/s/files/1/0884/1530/6033/files/gmail.png?v=1721085412" alt="">voldetocontact@gmail.com</p>
+         
+              </div>
+      
+              
+            </div>
+            <div class="social-icon">
+              <p>nos réseaux</p>
+              <a href="https://www.facebook.com/profile.php?id=61561210196645"><img class="fb" src="https://cdn.shopify.com/s/files/1/0884/1530/6033/files/5968764.png?v=1721000978"></a>
+              <a href="https://www.instagram.com/voldeto/"><img class="ig" src="https://cdn.shopify.com/s/files/1/0884/1530/6033/files/1384063.png?v=1721000978"></a>
+             
+            </div>
+           
+        
+          </div>
+        </section>
+        
+        
+        <footer>
+            <div class="footer-left">
+              <p>Copyright &copy; 2023.All Rights Reserved. Designed By Silent Wahid.</p>
+            </div>
+          </footer>
+        </div>
+
+
+        
+        <style>
+            *{
+              margin: 0;
+              padding: 0;
+            }
+            .rfooter{
+      position :absolute;
+      width:100%;
+      font-family: caslon bold;
+      }
+      .logo{
+      margin-top:20px ;
+      text-align: center;
+      
+      }
+      
+        footer {
+            background-color: #000000f3;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #ccc;
+            margin-top: 0px;
+            color: white;
+          }    
+          
+          .footer-left p {
+            margin: 0;
+          }
+          
+          .footer-right ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+          }
+          
+          .footer-right li {
+            margin: 0 10px;
+          }
+          
+          .footer-right a {
+            color: #e4e4e4;
+            text-decoration: none;
+          }
+          
+          .footer-right a:hover {
+            text-decoration: underline;
+          }
+          .fitxt {display: flex;
+              flex-direction: column;
+              margin-left: 50px;
+              align-items: flex-start;
+          }
+      
+      
+        /*Contact-info*/
+        .contact{
+          background:#000000f3;
+        }
+        .contact-info{
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(160px,auto));
+          gap: 3rem;
+        }
+        .firstinfo{
+         margin-left:20px;
+      }
+        .firstinfo img{
+          width: 30px;
+          height: auto; 
+        }
+      
+        .contact-info p{
+          color: #ffffff;
+          font-size: 30px;
+          font-weight: 400;
+          text-transform:capitalize ;
+          line-height: 1.5;
+          margin-bottom: 10px;
+          cursor: pointer;
+          transition: all  .42s;
+        }
+        .contact-info p:hover{
+          color:#ee1c47 ;
+        }
+        .social-icon{
+          text-align: center;
+        }
+        .social-icon img  {
+          width:40px;
+          margin:10px;
+          color: #ffffff;
+          margin-right: 10px;
+          font-size: 30px;
+          transition: all .42s ;
+        }
+      
+        .social-icon img:hover{
+          transform: scale(1.3);
+        }
+      
+        
+        .second-info .icon{
+          width: 50px;
+          height: auto;
+      
+        }
+        .second-info{
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          margin-left: 10px;
+          font-size: 30px;
+        }
+        .second-info p{
+          margin: 30px;
+        }
+        .algnitm{
+          display: flex;
+          align-items: center;
+        }
+        .third{
+          display: flex;
+          margin: 50px;
+          justify-content: center;
+        }
+        .third p{
+          font-size: 30px;
+          margin: 0 20px 0 20px;
+        }
+        .firstinfo{
+          border-right: #ffffff solid 1px;
+        }
+        @media(max-width:1500px){
+            .logo img{
+              width: 500px;
+            }}
+        @media(max-width:1056px){
+            .logo img{
+              width: 500px;
+            }
+          .second-info p{
+            font-size: 25px;
+            margin: 25px;
+          }}
+          @media(max-width:939px){
+            .logo img{
+              width: 400px;
+            }
+          .second-info{
+            font-size: 20px;
+          }}
+      
+          @media(max-width:823px){
+            .logo img{
+              width: 350px;
+            }
+            .fitxt{
+              margin-left:22px ;
+            }
+          .second-info p{
+            font-size: 18px;
+            margin: 20px;
+          }}
+      
+          @media(max-width:776px){
+            .logo img{
+              width: 320px;
+            }
+          .second-info{
+            font-size: 15px;
+          }}
+          @media(max-width:706px){
+            .logo img{
+              width: 300px;
+            }
+          .second-info p{
+            font-size: 12px;
+          }
+          .contact p{
+            font-size: 20px;
+          }
+          .fitxt{
+              margin-left:15px ;
+            }
+        }
+        @media(max-width:580px){
+            .logo img{
+              width: 260px;
+            }
+          .second-info p{
+            font-size: 12px;
+            margin: 15px;
+          }
+          .contact p{
+            font-size: 15px;
+          }
+          .firstinfo img{
+          width: 20px;
+          height: auto; 
+        }
+        } 
+        @media(max-width:580px){
+            .logo img{
+              width: 240px;
+            }
+          .second-info{
+            font-size: 10px;
+          }
+          .contact p{
+            font-size: 12px;
+          }
+          .firstinfo img{
+          width: 20px;
+          height: auto; 
+        }
+        .footer-left{
+          font-size: 15px;
+        }
+        .second-info .icon{
+          width: 40px;
+          height: auto;
+        }
+        .social-icon img {
+          width: 20px;
+        }
+        .contact-info {
+          gap: 0;
+        }
+        }
+      
+        @media(max-width:480px){
+            .logo img{
+              width: 200px;
+            }
+          .second-info{
+            font-size: 8px;
+          }
+          .contact p{
+            font-size: 10px;
+          }
+          .firstinfo img{
+          width: 20px;
+          height: auto; 
+        }
+        .footer-left{
+          font-size: 15px;
+        }
+        .second-info .icon{
+          width: 30px;
+          height: auto;
+        }
+      
+        .fitxt{
+              margin-left:10px ;
+            }
+      
+        }
+        @media(max-width:420px){
+            .logo img{
+              width: 150px;
+            }
+          .second-info{
+            font-size:5px;
+          }
+          .contact p{
+            font-size: 10px;
+          }
+          .firstinfo img{
+          width: 10px;
+          height: auto; 
+        }
+        .footer-left{
+          font-size: 15px;
+        }
+        .second-info .icon{
+          width: 25px;
+          height: auto;
+        }
+        .fitxt{
+              margin-left:0px ;
+            }
+        }
+        @media(max-width:370px){
+            .logo img{
+              width: 120px;
+            }
+          .second-info{
+            font-size:5px;
+          }
+          .contact p{
+            font-size: 8px;
+          }
+          .firstinfo img{
+          width: 10px;
+          height: auto; 
+        }
+        .footer-left{
+          font-size: 15px;
+        }
+        .second-info .icon{
+          width: 20px;
+          height: auto;
+        }
+        .fitxt{
+              margin-left:0 ;
+            }
+        }
+        @media(max-width:350px){
+            .logo img{
+              width: 120px;
+            }
+          .second-info{
+            font-size:5px;
+          }
+          .contact p{
+            font-size: 8px;
+          }
+          .firstinfo img{
+          width: 10px;
+          height: auto; 
+        }
+        .footer-left{
+          font-size: 15px;
+        }
+        .second-info .icon{
+          width: 20px;
+          height: auto;
+        }
+        .fitxt{
+              margin-left:0 ;
+            }
+        }
+      
+      
+      
+      
+      
+
+          </style>
+
+
+
+
+
+
+
+
+
+     
+
+    <script>
+        const products = document.querySelector('.products');
+        const leftButton = document.querySelector('.nav-button.left');
+        const rightButton = document.querySelector('.nav-button.right');
+        let currentIndex = 0;
+
+        // Variables for touch events
+        let startX = 0;
+        let currentX = 0;
+        let isSwiping = false;
+
+        const productWidth = document.querySelector('.product').offsetWidth + 30; // Including margin
+        const totalProducts = products.children.length;
+
+        function slideLeft() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlide();
+            }
+        }
+
+        function slideRight() {
+            if (currentIndex < totalProducts - 1) {
+                currentIndex++;
+                updateSlide();
+            }
+        }
+
+        function updateSlide() {
+            const offset = -currentIndex * productWidth;
+            products.style.transform = `translateX(${offset}px)`;
+        }
+
+        // Touch event handlers
+        products.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isSwiping = true;
+        });
+
+        products.addEventListener('touchmove', (e) => {
+            if (!isSwiping) return;
+            currentX = e.touches[0].clientX;
+        });
+
+        products.addEventListener('touchend', () => {
+            if (!isSwiping) return;
+            isSwiping = false;
+            const deltaX = startX - currentX;
+
+            if (deltaX > 50) {
+                slideRight(); // Swipe left
+            } else if (deltaX < -50) {
+                slideLeft(); // Swipe right
+            }
+        });
+
+        // Navigation button events
+        leftButton.addEventListener('click', slideLeft);
+        rightButton.addEventListener('click', slideRight);
+    </script>
+
+
+
+
+
+
+
+<script>
+    // Handle multiple sliders
+    const sliders = document.querySelectorAll('.products-container');
+
+    sliders.forEach((sliderContainer) => {
+        const products = sliderContainer.querySelector('.products');
+        const leftButton = sliderContainer.querySelector('.nav-button.left');
+        const rightButton = sliderContainer.querySelector('.nav-button.right');
+        const productWidth = sliderContainer.querySelector('.product').offsetWidth + 30; // Including margin
+        const totalProducts = products.children.length;
+
+        let currentIndex = 0;
+        let startX = 0;
+        let currentX = 0;
+        let isSwiping = false;
+
+        function slideLeft() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlide();
+            }
+        }
+
+        function slideRight() {
+            if (currentIndex < totalProducts - 1) {
+                currentIndex++;
+                updateSlide();
+            }
+        }
+
+        function updateSlide() {
+            const offset = -currentIndex * productWidth;
+            products.style.transform = `translateX(${offset}px)`;
+        }
+
+        // Touch event handlers for swipe gestures
+        products.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isSwiping = true;
+        });
+
+        products.addEventListener('touchmove', (e) => {
+            if (!isSwiping) return;
+            currentX = e.touches[0].clientX;
+        });
+
+        products.addEventListener('touchend', () => {
+            if (!isSwiping) return;
+            isSwiping = false;
+            const deltaX = startX - currentX;
+
+            if (deltaX > 50) {
+                slideRight(); // Swipe left
+            } else if (deltaX < -50) {
+                slideLeft(); // Swipe right
+            }
+        });
+
+        // Navigation button events
+        leftButton.addEventListener('click', slideLeft);
+        rightButton.addEventListener('click', slideRight);
+    });
+</script>
+
+
+
+
+
+
+
+<style>
+  /* Center the product-container */
+.product-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto; /* Ensure it's centered */
+    max-width: 1200px; /* Optional: Set a max width for better layout control */
+}
+
+/* Fix width of .logo on wider screens */
+@media (min-width: 1024px) {
+    .logo {
+      position: relative;
+       left: 35%;
+        width: 500px; /* Adjust width as per your preference */
+        
+}
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
