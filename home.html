@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VOLDETO - Elegant Wear</title>
+  <link rel="stylesheet" href="boxicons.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <link rel="stylesheet" href="style.css">
@@ -15,10 +16,9 @@
     <div class="nav-container">
       <div class="logo"><img  style="width: 35%; margin: 10px;" src="logo.png" alt=""></div>
       <nav class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#catalog">Catalog</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a href="home.html">Home</a>
+        <a href="catalog.html">Catalog</a>
+        <a href="contact.html">Contact</a>
       </nav>
       <div class="nav-toggle" onclick="toggleMenu()">☰</div>
     </div>
@@ -34,7 +34,7 @@
     </div>
   </div>
 </section>
-
+ 
 
 
 <section class="product-section" id="catalog">
@@ -44,33 +44,15 @@
   </div>
   <div class="product-grid">
     <div class="product-card">
-      <span class="discount">Up to 50% off</span>
-      <img src="5.png" alt="VOLDETO Blue Hoodie">
-      <p class="product-name">VOLDETO Shorts</p>
-      <p class="colors">12 colors</p>
-      <p class="price"><span>$82</span> <del>$165</del></p>
+      <a href="001.html">
+      <img src="IMG_6500.jpg" alt="VOLDETO Blue Hoodie">
+      <p class="product-name">CHEMISE CROPPED VOLDETO</p>
+      <p class="colors">Chemise 100% en LIN</p>
+      <p class="price"><span>4900 DA</span></p>
+      </a>
     </div>
-    <div class="product-card">
-      <span class="discount">Up to 50% off</span>
-      <img src="5.png" alt="VOLDETO Blue Pants">
-      <p class="product-name">VOLDETO Linen shirt</p>
-      <p class="colors">12 colors</p>
-      <p class="price"><span>$77</span> <del>$155</del></p>
-    </div>
-    <div class="product-card">
-      <span class="discount">Up to 50% off</span>
-      <img src="5.png" alt="VOLDETO Lilac Hoodie">
-      <p class="product-name">VOLDETO Jorts</p>
-      <p class="colors">12 colors</p>
-      <p class="price"><span>$82</span> <del>$165</del></p>
-    </div>
-    <div class="product-card">
-      <span class="discount">Up to 50% off</span>
-      <img src="5.png" alt="VOLDETO Lilac Pants">
-      <p class="product-name">VOLDETO Linen Pants</p>
-      <p class="colors">12 colors</p>
-      <p class="price"><span>$77</span> <del>$155</del></p>
-    </div>
+    
+   
   </div>
 </section>
 
@@ -82,13 +64,10 @@
 <section class="promo-section">
   <div class="promo-container">
     <div class="promo-text">
-      <h2>At your leisure</h2>
-      <p>Bio-based leisurewear for a softer, slower summer.</p>
-      <a href="#shop" class="promo-button">Shop now</a>
+      <br><br><br><br><br><br><br><br><br><br>
     </div>
   </div>
 </section>
-
 
 
 
@@ -101,62 +80,60 @@
   </div>
 
   <div class="carousel-container" id="carousel">
-  
-  <!-- Clone of LAST slide (for seamless reverse loop) -->
-  <div class="promo-card clone">
-    <div class="promo-text">
-      <h2>Limited Edition</h2>
-      <p>Unique seasonal drops. Made in small batches. Once they’re gone, they’re gone.</p>
-      <a href="#limited" class="promo-button">Shop Limited</a>
+
+    <!-- Clone of LAST slide -->
+    <div class="promo-card clone summer-fits">
+      <div class="promo-text">
+        <h2>Summer Fits</h2>
+        <p>Styled for the heat, designed for the street. Stand out this season with our ultimate summer fits.</p>
+        <a href="#fits" class="promo-button">Shop Fits</a>
+      </div>
     </div>
+
+    <!-- Slide 1: SS25 Beach Wear -->
+    <div class="promo-card ss25-beach">
+      <div class="promo-text">
+        <h2>SS25 Beach Wear</h2>
+        <p>Relax under the sun with the SS25 collection. Lightweight, bold, and made for beach days.</p>
+        <a href="#beach" class="promo-button">Explore SS25</a>
+      </div>
+    </div>
+
+    <!-- Slide 2: Summer Shirts -->
+    <div class="promo-card summer-shirts">
+      <div class="promo-text">
+        <h2>Summer Shirts</h2>
+        <p>From clean cuts to printed heat — discover shirts that breathe style and comfort.</p>
+        <a href="#shirts" class="promo-button">View Shirts</a>
+      </div>
+    </div>
+
+    <!-- Slide 3: Summer Fits -->
+    <div class="promo-card summer-fits">
+      <div class="promo-text">
+        <h2>Summer Fits</h2>
+        <p>Styled for the heat, designed for the street. Stand out this season with our ultimate summer fits.</p>
+        <a href="#fits" class="promo-button">Shop Fits</a>
+      </div>
+    </div>
+
+    <!-- Clone of FIRST slide -->
+    <div class="promo-card clone ss25-beach">
+      <div class="promo-text">
+        <h2>SS25 Beach Wear</h2>
+        <p>Relax under the sun with the SS25 collection. Lightweight, bold, and made for beach days.</p>
+        <a href="#beach" class="promo-button">Explore SS25</a>
+      </div>
+    </div>
+
   </div>
 
-  <!-- REAL SLIDE 1 -->
-  <div class="promo-card">
-    <div class="promo-text">
-      <h2>Summer Drop</h2>
-      <p>Breathable essentials designed to keep you cool and comfortable all summer long.</p>
-      <a href="#summer" class="promo-button">Shop Summer</a>
-    </div>
+  <!-- Dots -->
+  <div class="carousel-dots" id="carouselDots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
   </div>
-
-  <!-- REAL SLIDE 2 -->
-  <div class="promo-card">
-    <div class="promo-text">
-      <h2>Essential Collection</h2>
-      <p>Modern minimalism for daily wear. Crafted to last, styled for every moment.</p>
-      <a href="#essentials" class="promo-button">Explore Essentials</a>
-    </div>
-  </div>
-
-  <!-- REAL SLIDE 3 -->
-  <div class="promo-card">
-    <div class="promo-text">
-      <h2>Limited Edition</h2>
-      <p>Unique seasonal drops. Made in small batches. Once they’re gone, they’re gone.</p>
-      <a href="#limited" class="promo-button">Shop Limited</a>
-    </div>
-  </div>
-
-  <!-- Clone of FIRST slide (for seamless loop forward) -->
-  <div class="promo-card clone">
-    <div class="promo-text">
-      <h2>Summer Drop</h2>
-      <p>Breathable essentials designed to keep you cool and comfortable all summer long.</p>
-      <a href="#summer" class="promo-button">Shop Summer</a>
-    </div>
-  </div>
-
-</div>
-
-
-<!-- Dots -->
-<div class="carousel-dots" id="carouselDots">
-  <span class="dot active"></span>
-  <span class="dot"></span>
-  <span class="dot"></span>
-</div>
-
 </section>
 
 
