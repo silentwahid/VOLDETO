@@ -1,320 +1,234 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VOLDETO - Elegant Wear</title>
-  <link rel="stylesheet" href="boxicons.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOLDETO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="LOGO.png" type="image/x-icon">
+  <style>
+    :root {
+      --black: #ffffff;
+      --white: #0a0A0A;
+      --gray: #444444;
+      --light-gray: #888888;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex; flex-direction: column;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
 
-  <link rel="stylesheet" href="style.css">
+    /* Navbar */
+    nav {
+      background: var(--black);
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      position: relative;
+      z-index: 100;
+    }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+    .menu {
+      display: flex; gap: 1.5rem;
+    }
+    .menu a {
+      font-weight: 500;
+      transition: color .3s, transform .3s;
+    }
+    .menu a:hover {
+      color: var(--light-gray);
+      transform: translateY(-2px);
+    }
+    .burger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+    .burger span {
+      width: 25px;
+      height: 3px;
+      background: var(--white);
+      transition: all .3s;
+    }
+    .cta {
+      background: var(--white);
+      color: var(--black);
+      padding: .5rem 1rem;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: transform .3s;
+    }
+    .cta:hover {
+      transform: scale(1.05);
+    }
+
+    /* Mobile Menu */
+   @media (max-width:768px) {
+  .menu { 
+    margin: 50% 0;
+    display: none; 
+    position: absolute; 
+    top: 60px; left: 0; right: 0; 
+    background: var(--black); 
+    flex-direction: column; 
+    padding: 1rem 2rem; 
+    gap: 1rem; 
+  }
+  .burger { display: flex; }
+
+  nav.active .menu {
+    display: flex;
+  }
+  nav.active .burger span:nth-child(1) {
+    transform: rotate(45deg) translate(5px,5px);
+  }
+  nav.active .burger span:nth-child(2) {
+    opacity: 0;
+  }
+  nav.active .burger span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px,-6px);
+  }
+
+  .footer-wrap { 
+    flex-direction: column; 
+    align-items: center; 
+  }
+  .footer-column { 
+    text-align: center; 
+  }
+
+  /* 👇 Center and enlarge "Coming Soon" text on mobile */
+  main {
+    padding: 3rem 1rem;
+  }
+  h1 {
+    font-size: 20vw; /* larger for small screens */
+  }
+}
+
+
+    /* Hero */
+    main {
+      flex: 1;
+      display: flex; justify-content: center; align-items: center;
+      text-align: center;
+    }
+    h1 {
+      font-size: 300%;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px var(--gray); }
+      to { text-shadow: 0 0 20px var(--light-gray); }
+    }
+
+    /* Footer */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--gray);
+      padding: 2rem;
+    }
+    .footer-wrap {
+      display: flex; flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1000px; margin: auto;
+      gap: 2rem;
+    }
+    .footer-column {
+      flex: 1 1 200px;
+    }
+    .footer-column h4 {
+      margin-bottom: .8rem;
+      font-size: 1.1rem;
+    }
+    .footer-column a, .footer-column p {
+      font-size: .95rem;
+      color: var(--light-gray);
+      margin-bottom: .4rem;
+      display: block;
+      transition: color .3s;
+    }
+    .footer-column a:hover {
+      color: var(--white);
+    }
+    .social {
+      display: flex; gap: 1rem;
+      margin-top: .6rem;
+    }
+    .bottom {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: .85rem;
+      color: var(--gray);
+    }
+
+    @media (max-width:768px) {
+      .footer-wrap { flex-direction: column; align-items: center; }
+      .footer-column { text-align: center; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="nav-container">
-      <div class="logo"><img  style="width: 35%; margin: 10px;" src="logo.png" alt=""></div>
-      <nav class="nav-links">
-        <a href="home.html">Home</a>
-        <a href="catalog.html">Catalog</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <div class="nav-toggle" onclick="toggleMenu()">☰</div>
+  <nav id="nav">
+    <div class="logo"><img style="width: 50%; margin: 20px;" src="logo.png" alt=""></div>
+    <div class="burger" onclick="navToggle()">
+      <span></span><span></span><span></span>
     </div>
-  </header>
-
-  <!-- HERO SECTION -->
-<section class="hero-section" id="home">
-  <div class="container">
-    <div class="hero-text fade-in">
-      <h1>VOLDETO <br><span>ELEGANT EMPIRE</span></h1>
-      <p class="slide-in-left">Clothing made for elegance, comfort, and modern lifestyle.</p>
-      <a href="#catalog" class="cta-button slide-in-right">VIEW CATALOG</a>
+    <div class="menu">
+      <a href="#home">Accueil</a>
+      <a href="#services">Services</a>
+      <a href="#about">À propos</a>
+      <a href="#contact">Contact</a>
     </div>
-  </div>
-</section>
- 
+  </nav>
 
-
-<section class="product-section" id="catalog">
-  <div class="section-header fade-in">
-    <h2>Shop the VOLDETO Sale</h2>
-    <a href="#view-all" class="view-all">View all</a>
-  </div>
-  <div class="product-grid">
-    <div class="product-card">
-      <a href="001.html">
-      <img src="IMG_6500.jpg" alt="VOLDETO Blue Hoodie">
-      <p class="product-name">CHEMISE CROPPED VOLDETO</p>
-      <p class="colors">Chemise 100% en LIN</p>
-      <p class="price"><span>4900 DA</span></p>
-      </a>
-    </div>
-    
-   
-  </div>
-</section>
-
-
-
-
-
-
-<section class="promo-section">
-  <div class="promo-container">
-    <div class="promo-text">
-      <br><br><br><br><br><br><br><br><br><br>
-    </div>
-  </div>
-</section>
-
-
-
-<section class="carousel-wrapper">
-  <h2 class="carousel-title fade-in">VOLDETO Campaigns</h2>
-
-  <div class="carousel-nav">
-    <button id="prevBtn">&#10094;</button>
-    <button id="nextBtn">&#10095;</button>
-  </div>
-
-  <div class="carousel-container" id="carousel">
-
-    <!-- Clone of LAST slide -->
-    <div class="promo-card clone summer-fits">
-      <div class="promo-text">
-        <h2>Summer Fits</h2>
-        <p>Styled for the heat, designed for the street. Stand out this season with our ultimate summer fits.</p>
-        <a href="#fits" class="promo-button">Shop Fits</a>
-      </div>
-    </div>
-
-    <!-- Slide 1: SS25 Beach Wear -->
-    <div class="promo-card ss25-beach">
-      <div class="promo-text">
-        <h2>SS25 Beach Wear</h2>
-        <p>Relax under the sun with the SS25 collection. Lightweight, bold, and made for beach days.</p>
-        <a href="#beach" class="promo-button">Explore SS25</a>
-      </div>
-    </div>
-
-    <!-- Slide 2: Summer Shirts -->
-    <div class="promo-card summer-shirts">
-      <div class="promo-text">
-        <h2>Summer Shirts</h2>
-        <p>From clean cuts to printed heat — discover shirts that breathe style and comfort.</p>
-        <a href="#shirts" class="promo-button">View Shirts</a>
-      </div>
-    </div>
-
-    <!-- Slide 3: Summer Fits -->
-    <div class="promo-card summer-fits">
-      <div class="promo-text">
-        <h2>Summer Fits</h2>
-        <p>Styled for the heat, designed for the street. Stand out this season with our ultimate summer fits.</p>
-        <a href="#fits" class="promo-button">Shop Fits</a>
-      </div>
-    </div>
-
-    <!-- Clone of FIRST slide -->
-    <div class="promo-card clone ss25-beach">
-      <div class="promo-text">
-        <h2>SS25 Beach Wear</h2>
-        <p>Relax under the sun with the SS25 collection. Lightweight, bold, and made for beach days.</p>
-        <a href="#beach" class="promo-button">Explore SS25</a>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Dots -->
-  <div class="carousel-dots" id="carouselDots">
-    <span class="dot active"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-  </div>
-</section>
-
-
-
-
-
-
-
-
-
-
-<div class="loader-wrapper">
-  <div class="loader"></div>
-</div>
-
-<style>
-  .loader-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: white;
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.5s ease;
-  }
   
-  .loader {
-    width: 50px;
-    height: 50px;
-    border: 5px solid #f3f3f3;
-    border-top: 5px solid #001F3F;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-  .loader-wrapper.hide {
-    opacity: 0;
-    pointer-events: none;
-  }
-</style>
-
-<script>
-  window.addEventListener('load', function() {
-    setTimeout(function() {
-      document.querySelector('.loader-wrapper').classList.add('hide');
-    }, 500);
-  });
-</script>
-
-
-
-
-
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-brand">
-      <img style="width: 35%; margin: 10px;"  src="logo.png" alt="">
-      <p>Elegant Empire — crafted for bold comfort and timeless minimalism.</p>
-    </div>
-
-    <div class="footer-links">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="#shop">Shop</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#lookbook">Lookbook</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-social">
-      <h4>Follow Us</h4>
-      <div class="social-icons">
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+<br><br><br><br><br><br><br><br>
+  <main id="home">
+    <h1>Coming Soon</h1>
+  </main>
+<br><br><br><br><br><br><br><br><br><br>
+  <footer>
+    <div class="footer-wrap">
+      <div class="footer-column">
+        <h4>Navigation</h4>
+        <a href="#home">Accueil</a>
+        <a href="#services">Services</a>
+        <a href="#about">À propos</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <p>Email : voldetocontact@gmail.com</p>
+        <p>Tél : +213664722000 <br>     +213557629835</p>
+      </div>
+      <div class="footer-column">
+        <h4>Suivez-nous</h4>
+        <div class="social">
+             <a href="https://www.tiktok.com/@voldeto.ee"><i class="fab fa-tiktok"></i></a>
+             <a href="https://www.instagram.com/voldeto/"><i class="fab fa-instagram"></i></a>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="footer-bottom">
-    <p>&copy; 2025 VOLDETO. All rights reserved.</p>
-  </div>
-</footer>
-
-
+    <div class="bottom">© 2025 SilentWahid. Tous droits réservés.</div>
+  </footer>
 
   <script>
-    function toggleMenu() {
-      document.querySelector('.nav-links').classList.toggle('active');
+    function navToggle(){
+      document.getElementById('nav').classList.toggle('active');
     }
   </script>
-
-
-<script>
-  const carousel = document.getElementById('carousel');
-  const nextBtn = document.getElementById('nextBtn');
-  const prevBtn = document.getElementById('prevBtn');
-  const dots = document.querySelectorAll('#carouselDots .dot');
-
-  const slides = carousel.querySelectorAll('.promo-card');
-  const slideWidth = slides[0].offsetWidth;
-  let currentIndex = 1;
-  let autoScroll;
-  let isPaused = false;
-
-  // Initial scroll to the real first slide (after clone)
-  carousel.scrollLeft = slideWidth;
-
-  function goToSlide(index, instant = false) {
-    currentIndex = index;
-
-    carousel.scrollTo({
-      left: slideWidth * currentIndex,
-      behavior: instant ? 'auto' : 'smooth'
-    });
-
-    updateDots();
-  }
-
-  function updateDots() {
-    dots.forEach(dot => dot.classList.remove('active'));
-    const realIndex = (currentIndex - 1 + dots.length) % dots.length;
-    dots[realIndex].classList.add('active');
-  }
-
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => goToSlide(index + 1));
-  });
-
-  nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
-  prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
-
-  function startAutoScroll() {
-    autoScroll = setInterval(() => {
-      if (!isPaused) goToSlide(currentIndex + 1);
-    }, 5000);
-  }
-
-  carousel.addEventListener('mouseenter', () => isPaused = true);
-  carousel.addEventListener('mouseleave', () => isPaused = false);
-
-  carousel.addEventListener('scroll', () => {
-    const newIndex = Math.round(carousel.scrollLeft / slideWidth);
-    currentIndex = newIndex;
-
-    // Handle loop back to start
-    if (currentIndex === slides.length - 1) {
-      setTimeout(() => {
-        goToSlide(1, true);
-      }, 300);
-    }
-
-    // Handle loop to end
-    if (currentIndex === 0) {
-      setTimeout(() => {
-        goToSlide(slides.length - 2, true);
-      }, 300);
-    }
-
-    updateDots();
-  });
-
-  window.addEventListener('resize', () => {
-    goToSlide(currentIndex, true);
-  });
-
-  // Start
-  goToSlide(currentIndex, true);
-  startAutoScroll();
-</script>
-<script src="main.js"></script>
 
 </body>
 </html>
