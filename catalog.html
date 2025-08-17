@@ -7,14 +7,292 @@
   <link rel="stylesheet" href="boxicons.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" href="icon.jpg">
+  <style>
+    /* Animation Keyframes */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideUp {
+      from { 
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes slideInLeft {
+      from { 
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes scaleIn {
+      from { 
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to { 
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    /* Section Transitions */
+    section {
+      opacity: 0;
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    section.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Product Section Animations */
+    .product-section {
+      transform: translateY(30px);
+    }
+    
+    .section-header {
+      opacity: 0;
+      animation: fadeIn 0.8s ease forwards 0.3s;
+    }
+    
+    .product-grid {
+      perspective: 1200px;
+    }
+    
+    .product-card {
+      opacity: 0;
+      transform: translateY(20px) rotateY(15deg);
+      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .product-card:nth-child(1) {
+      animation: fadeIn 0.8s ease forwards 0.4s, slideUp 0.8s ease forwards 0.4s;
+    }
+    
+    .product-card:nth-child(2) {
+      animation: fadeIn 0.8s ease forwards 0.6s, slideUp 0.8s ease forwards 0.6s;
+    }
+    
+    .product-card:nth-child(3) {
+      animation: fadeIn 0.8s ease forwards 0.8s, slideUp 0.8s ease forwards 0.8s;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-10px) rotateY(0) scale(1.03);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      z-index: 2;
+    }
+    
+    .product-card img {
+      transition: transform 0.6s ease, opacity 0.4s ease;
+    }
+    
+    .product-card:hover img {
+      transform: scale(1.05);
+    }
+    
+    .product-name {
+      transition: color 0.3s ease;
+    }
+    
+    .product-card:hover .product-name {
+      color: #001F3F;
+    }
+    
+    .price {
+      transition: all 0.4s ease;
+      position: relative;
+    }
+    
+    .product-card:hover .price {
+      transform: translateX(5px);
+      color: #001F3F;
+    }
+    
+    .price::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #001F3F;
+      transition: width 0.4s ease;
+    }
+    
+    .product-card:hover .price::after {
+      width: 100%;
+    }
+    
+    /* Footer Animations */
+    .footer {
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 0.3s;
+    }
+    
+    .footer-brand img {
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .footer-brand:hover img {
+      transform: rotate(-5deg) scale(1.05);
+    }
+    
+    .footer-links li {
+      opacity: 0;
+      transform: translateX(-15px);
+      transition: all 0.5s ease;
+    }
+    
+    .footer-links li:nth-child(1) { transition-delay: 0.1s; }
+    .footer-links li:nth-child(2) { transition-delay: 0.2s; }
+    .footer-links li:nth-child(3) { transition-delay: 0.3s; }
+    .footer-links li:nth-child(4) { transition-delay: 0.4s; }
+    
+    .footer:hover .footer-links li {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .social-icons a {
+      opacity: 0;
+      transform: translateY(10px) rotate(15deg);
+      transition: all 0.5s ease;
+      display: inline-block;
+    }
+    
+    .social-icons a:nth-child(1) { transition-delay: 0.1s; }
+    .social-icons a:nth-child(2) { transition-delay: 0.2s; }
+    .social-icons a:nth-child(3) { transition-delay: 0.3s; }
+    
+    .footer:hover .social-icons a {
+      opacity: 1;
+      transform: translateY(0) rotate(0);
+    }
+    
+    /* Navbar Animation */
+    .navbar {
+      transition: all 0.4s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+    
+    .nav-links a {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background-color: #001F3F;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    
+    .nav-links a:hover::before {
+      width: 80%;
+    }
+    
+    .nav-links a i {
+      transition: transform 0.3s ease;
+    }
+    
+    .nav-links a:hover i {
+      transform: translateY(-3px);
+    }
+    
+    /* Cart Icon Animation */
+    .bxs-cart {
+      position: relative;
+    }
+    
+    .bxs-cart::after {
+      content: '0';
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #001F3F;
+      color: white;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-links a:hover .bxs-cart::after {
+      transform: scale(1.2);
+      background: #d4af37;
+    }
+    
+    /* Loading Animation */
+    .loader-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.8s ease;
+    }
+    
+    .loader {
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(0, 31, 63, 0.1);
+      border-top: 4px solid #001F3F;
+      border-radius: 50%;
+      animation: spin 1.2s cubic-bezier(0.5, 0.1, 0.5, 0.9) infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(720deg); }
+    }
+    
+    .loader-wrapper.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!-- Loading Screen -->
+  <div class="loader-wrapper">
+    <div class="loader"></div>
+  </div>
+
   <!-- NAVBAR -->
   <header class="navbar">
     <div class="nav-container">
-      <div class="logo"><img  style="width: 35%; margin: 10px;" src="logo.png" alt=""></div>
+      <div class="logo"><img style="width: 35%; margin: 10px;" src="logo.png" alt="VOLDETO"></div>
       <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="catalog.html">Catalog</a>
@@ -25,77 +303,113 @@
     </div>
   </header>
 
-
-
-
-
-
-<section class="product-section" id="catalog">
-  <div class="section-header fade-in">
-    <h2>Shop the VOLDETO Sale</h2>
-  </div>
-  <div class="product-grid">
-    <div class="product-card">
-      <a href="croppedshirt.html">
-      <img src="IMG_6500.jpg" alt="VOLDETO Blue Hoodie">
-      <p class="product-name">CHEMISE CROPPED VOLDETO</p>
-      <p class="colors">Chemise 100% en LIN</p>
-      <p class="price"><span>4900 DA</span></p>
-      </a>
+  <!-- PRODUCT SECTION -->
+  <section class="product-section" id="catalog">
+    <div class="section-header fade-in">
+      <h2>Shop the VOLDETO Sale</h2>
     </div>
-    
-    
-   
-  </div>
-</section>
-
-
-
-
-
-
-
-
-
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-brand">
-      <img style="width: 35%; margin: 10px;"  src="logo.png" alt="">
-      <p>Elegant Empire — crafted for bold comfort and timeless minimalism.</p>
-    </div>
-
-    <div class="footer-links">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="#shop">Shop</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#lookbook">Lookbook</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-social">
-      <h4>Follow Us</h4>
-      <div class="social-icons">
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <div class="product-grid">
+      <div class="product-card">
+        <a href="croppedshirt.html">
+          <img src="IMG_6500.jpg" alt="VOLDETO Cropped Shirt">
+          <p class="product-name">CHEMISE CROPPED VOLDETO</p>
+          <p class="colors">Chemise 100% en LIN</p>
+          <p class="price"><span>4900 DA</span></p>
+        </a>
+      </div>
+      <div class="product-card">
+        <a href="croppedshirt.html">
+          <img src="IMG_6500.jpg" alt="VOLDETO Cropped Shirt">
+          <p class="product-name">CHEMISE CROPPED VOLDETO</p>
+          <p class="colors">Chemise 100% en LIN</p>
+          <p class="price"><span>4900 DA</span></p>
+        </a>
+      </div>
+      <div class="product-card">
+        <a href="croppedshirt.html">
+          <img src="IMG_6500.jpg" alt="VOLDETO Cropped Shirt">
+          <p class="product-name">CHEMISE CROPPED VOLDETO</p>
+          <p class="colors">Chemise 100% en LIN</p>
+          <p class="price"><span>4900 DA</span></p>
+        </a>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="footer-bottom">
-    <p>&copy; 2025 VOLDETO. All rights reserved.</p>
-  </div>
-</footer>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img style="width: 35%; margin: 10px;" src="logo.png" alt="VOLDETO">
+        <p>Elegant Empire — crafted for bold comfort and timeless minimalism.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="catalog.html">Catalog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">About Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 VOLDETO. All rights reserved.</p>
+    </div>
+  </footer>
 
   <script>
+    // Toggle mobile menu
     function toggleMenu() {
       document.querySelector('.nav-links').classList.toggle('active');
     }
+
+    // Loading animation
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        document.querySelector('.loader-wrapper').classList.add('hide');
+      }, 1200);
+    });
+
+    // Intersection Observer for scroll animations
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('section');
+      
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+
+      // Animate product cards sequentially
+      const productCards = document.querySelectorAll('.product-card');
+      productCards.forEach((card, index) => {
+        card.style.animationDelay = `${0.3 + (index * 0.2)}s`;
+      });
+    });
   </script>
-
-
 </body>
-
 </html>
