@@ -258,15 +258,63 @@
       color: #001F3F;
       transform: scale(1.05);
     }
+
+    /* Loader Screen */
+    .loader-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
+    }
+
+    .loader-text {
+      font-size: 2.5rem;
+      font-weight: 500;
+      letter-spacing: 0.2rem;
+      text-align: center;
+      line-height: 1.5;
+      opacity: 0;
+      transform: translateY(20px);
+      margin: 10px 0;
+    }
+    
+    /* Hide content until loader is done */
+    body.loading .navbar,
+    body.loading .hero-section,
+    body.loading section,
+    body.loading .footer {
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    body:not(.loading) .loader-screen {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
   </style>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="loading">
+  <!-- Loader Screen -->
+  <div class="loader-screen">
+    <div class="loader-text">Elegant</div>
+    <div class="loader-text">Fashion</div>
+    <div class="loader-text">Modern</div>
+  </div>
 
   <!-- NAVBAR -->
   <header class="navbar">
     <div class="nav-container">
-      <div class="logo"><img  style="width: 35%; margin: 10px;" src="logo.png" alt=""></div>
+      <div class="logo"><img style="width: 35%; margin: 10px;" src="logo.png" alt=""></div>
       <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="catalog.html">Catalog</a>
@@ -277,296 +325,302 @@
   </header>
 
   <!-- HERO SECTION -->
-<section class="hero-section" id="home">
-  <div class="container">
-    <div class="hero-text fade-in">
-      <h1>VOLDETO <br><span>ELEGANT EMPIRE</span></h1>
-      <p class="slide-in-left">Clothing made for elegance, comfort, and modern lifestyle.</p>
-      <a href="catalog.html" class="cta-button slide-in-right">VIEW CATALOG</a>
+  <section class="hero-section" id="home">
+    <div class="container">
+      <div class="hero-text fade-in">
+        <h1>VOLDETO <br><span>ELEGANT EMPIRE</span></h1>
+        <p class="slide-in-left">Clothing made for elegance, comfort, and modern lifestyle.</p>
+        <a href="catalog.html" class="cta-button slide-in-right">VIEW CATALOG</a>
+      </div>
     </div>
-  </div>
-</section>
- 
+  </section>
 
-<!-- PRODUCT SECTION -->
-<section class="product-section" id="catalog">
-  <div class="section-header fade-in">
-    <h2>Shop the VOLDETO Sale</h2>
-    <a href="catalog.html" class="view-all">View all</a>
-  </div>
-  <div class="product-grid">
-    <div class="product-card">
-      <a href="croppedshirt.html">
-      <img src="IMG_6500.jpg" alt="VOLDETO Blue Hoodie">
-      <p class="product-name">CHEMISE CROPPED VOLDETO</p>
-      <p class="colors">Chemise 100% en LIN</p>
-      <p class="price"><span>4900 DA</span></p>
-      </a>
+  <!-- PRODUCT SECTION -->
+  <section class="product-section" id="catalog">
+    <div class="section-header fade-in">
+      <h2>Shop the VOLDETO Sale</h2>
+      <a href="catalog.html" class="view-all">View all</a>
     </div>
-  </div>
-</section>
-
-<!-- PROMO SECTION -->
-<section class="promo-section">
-  <div class="promo-container">
-    <div class="promo-text">
-      <br><br><br><br><br><br><br><br><br><br>
+    <div class="product-grid">
+      <div class="product-card">
+        <a href="croppedshirt.html">
+          <img src="IMG_6500.jpg" alt="VOLDETO Blue Hoodie">
+          <p class="product-name">CHEMISE CROPPED VOLDETO</p>
+          <p class="colors">Chemise 100% en LIN</p>
+          <p class="price"><span>4900 DA</span></p>
+        </a>
+      </div>
+      <div class="product-card">
+        <a href="002.html">
+          <img src="5.png" alt="VOLDETO Blue Hoodie">
+          <p class="product-name">ALGERIA TSHIRT VOLDETO</p>
+          <p class="colors">Chemise 100% en COTON</p>
+          <p class="price"><span>3100 DA</span></p>
+        </a>
+      </div>
+      <div class="product-card">
+        <a href="002.html">
+          <img src="5.png" alt="VOLDETO Blue Hoodie">
+          <p class="product-name">ALGERIA TSHIRT VOLDETO</p>
+          <p class="colors">Chemise 100% en COTON</p>
+          <p class="price"><span>3100 DA</span></p>
+        </a>
+      </div> 
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- CAROUSEL SECTION -->
-<section class="carousel-wrapper">
-  <h2 class="carousel-title fade-in">VOLDETO Campaigns</h2>
-
-  <div class="carousel-nav">
-    <button id="prevBtn">&#10094;</button>
-    <button id="nextBtn">&#10095;</button>
-  </div>
-
-  <div class="carousel-container" id="carousel">
-    <!-- Clone of LAST slide -->
-    <div class="promo-card clone summer-fits">
+  <!-- PROMO SECTION -->
+  <section class="promo-section">
+    <div class="promo-container">
       <div class="promo-text">
-        <h2>Summer Fits</h2>
-        <p>Styled for the heat, designed for the street. Stand out this season with our ultimate summer fits.</p>
-        <a href="catalog.html" class="promo-button">Shop Fits</a>
+        <br><br><br><br><br><br><br><br><br><br>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAROUSEL SECTION -->
+  <section class="carousel-wrapper">
+    <h2 class="carousel-title fade-in">VOLDETO Campaigns</h2>
+
+    <div class="carousel-nav">
+      <button id="prevBtn">&#10094;</button>
+      <button id="nextBtn">&#10095;</button>
+    </div>
+
+    <div class="carousel-container" id="carousel">
+      <!-- Clone of LAST slide -->
+      <div class="promo-card clone summer-fits">
+        <div class="promo-text">
+          <h2>Summer Fits</h2>
+          <p>Styled for the heat, designed for the street. Stand out this season with our ultimate summer fits.</p>
+          <a href="catalog.html" class="promo-button">Shop Fits</a>
+        </div>
+      </div>
+
+      <!-- Slide 1: SS25 Beach Wear -->
+      <div class="promo-card ss25-beach">
+        <div class="promo-text">
+          <h2>SS25 Beach Wear</h2>
+          <p>Relax under the sun with the SS25 collection. Lightweight, bold, and made for beach days.</p>
+          <a href="catalog.html" class="promo-button">Explore SS25</a>
+        </div>
+      </div>
+
+      <!-- Slide 2: Summer Shirts -->
+      <div class="promo-card summer-shirts">
+        <div class="promo-text">
+          <h2>Summer Shirts</h2>
+          <p>From clean cuts to printed heat — discover shirts that breathe style and comfort.</p>
+          <a href="catalog.html" class="promo-button">View Shirts</a>
+        </div>
+      </div>
+
+      <!-- Slide 3: Summer Fits -->
+      <div class="promo-card summer-fits">
+        <div class="promo-text">
+          <h2>Summer Fits</h2>
+          <p>Styled for the heat, designed for the street. Stand out this season with our ultimate summer fits.</p>
+          <a href="#fits" class="promo-button">Shop Fits</a>
+        </div>
+      </div>
+
+      <!-- Clone of FIRST slide -->
+      <div class="promo-card clone ss25-beach">
+        <div class="promo-text">
+          <h2>SS25 Beach Wear</h2>
+          <p>Relax under the sun with the SS25 collection. Lightweight, bold, and made for beach days.</p>
+          <a href="#beach" class="promo-button">Explore SS25</a>
+        </div>
       </div>
     </div>
 
-    <!-- Slide 1: SS25 Beach Wear -->
-    <div class="promo-card ss25-beach">
-      <div class="promo-text">
-        <h2>SS25 Beach Wear</h2>
-        <p>Relax under the sun with the SS25 collection. Lightweight, bold, and made for beach days.</p>
-        <a href="catalog.html" class="promo-button">Explore SS25</a>
+    <!-- Dots -->
+    <div class="carousel-dots" id="carouselDots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img style="width: 35%; margin: 10px;"  src="logo.png" alt="">
+        <p>Elegant Empire — crafted for bold comfort and timeless minimalism.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#shop">Shop</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#lookbook">Lookbook</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        </div>
       </div>
     </div>
 
-    <!-- Slide 2: Summer Shirts -->
-    <div class="promo-card summer-shirts">
-      <div class="promo-text">
-        <h2>Summer Shirts</h2>
-        <p>From clean cuts to printed heat — discover shirts that breathe style and comfort.</p>
-        <a href="catalog.html" class="promo-button">View Shirts</a>
-      </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 VOLDETO. All rights reserved.</p>
     </div>
+  </footer>
 
-    <!-- Slide 3: Summer Fits -->
-    <div class="promo-card summer-fits">
-      <div class="promo-text">
-        <h2>Summer Fits</h2>
-        <p>Styled for the heat, designed for the street. Stand out this season with our ultimate summer fits.</p>
-        <a href="#fits" class="promo-button">Shop Fits</a>
-      </div>
-    </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script>
+    // Loader animation
+    document.addEventListener('DOMContentLoaded', function() {
+      const loaderTexts = document.querySelectorAll('.loader-text');
+      const loaderScreen = document.querySelector('.loader-screen');
+      const body = document.body;
 
-    <!-- Clone of FIRST slide -->
-    <div class="promo-card clone ss25-beach">
-      <div class="promo-text">
-        <h2>SS25 Beach Wear</h2>
-        <p>Relax under the sun with the SS25 collection. Lightweight, bold, and made for beach days.</p>
-        <a href="#beach" class="promo-button">Explore SS25</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Dots -->
-  <div class="carousel-dots" id="carouselDots">
-    <span class="dot active"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-  </div>
-</section>
-
-<!-- LOADER -->
-<div class="loader-wrapper">
-  <div class="loader"></div>
-</div>
-
-<style>
-  .loader-wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: white;
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.5s ease;
-  }
-  
-  .loader {
-    width: 50px;
-    height: 50px;
-    border: 5px solid #f3f3f3;
-    border-top: 5px solid #001F3F;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-  .loader-wrapper.hide {
-    opacity: 0;
-    pointer-events: none;
-  }
-</style>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-brand">
-      <img style="width: 35%; margin: 10px;"  src="logo.png" alt="">
-      <p>Elegant Empire — crafted for bold comfort and timeless minimalism.</p>
-    </div>
-
-    <div class="footer-links">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="#shop">Shop</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#lookbook">Lookbook</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-social">
-      <h4>Follow Us</h4>
-      <div class="social-icons">
-        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    <p>&copy; 2025 VOLDETO. All rights reserved.</p>
-  </div>
-</footer>
-
-<script>
-  // Toggle mobile menu
-  function toggleMenu() {
-    document.querySelector('.nav-links').classList.toggle('active');
-  }
-
-  // Intersection Observer for section animations
-  document.addEventListener('DOMContentLoaded', function() {
-    const sections = document.querySelectorAll('section');
-    
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate');
-          observer.unobserve(entry.target);
-        }
+      // Animate text one by one
+      gsap.to(loaderTexts, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        stagger: 0.3,
+        ease: "power2.out",
+        delay: 0.2
       });
-    }, observerOptions);
-    
-    sections.forEach(section => {
-      observer.observe(section);
-    });
-  });
 
-  // Carousel functionality
-  const carousel = document.getElementById('carousel');
-  const nextBtn = document.getElementById('nextBtn');
-  const prevBtn = document.getElementById('prevBtn');
-  const dots = document.querySelectorAll('#carouselDots .dot');
+      // Hide loader after animation and show content
+      setTimeout(() => {
+        gsap.to(loaderScreen, {
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          onComplete: () => {
+            loaderScreen.style.display = 'none';
+            body.classList.remove('loading');
+          }
+        });
 
-  const slides = carousel.querySelectorAll('.promo-card');
-  const slideWidth = slides[0].offsetWidth;
-  let currentIndex = 1;
-  let autoScroll;
-  let isPaused = false;
-
-  // Initial scroll to the real first slide (after clone)
-  carousel.scrollLeft = slideWidth;
-
-  function goToSlide(index, instant = false) {
-    currentIndex = index;
-
-    carousel.scrollTo({
-      left: slideWidth * currentIndex,
-      behavior: instant ? 'auto' : 'smooth'
+        // Fade in hero & sections
+        gsap.to(".fade-in", {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.15,
+          ease: "power2.out"
+        });
+      }, 4000);
     });
 
-    updateDots();
-  }
-
-  function updateDots() {
-    dots.forEach(dot => dot.classList.remove('active'));
-    const realIndex = (currentIndex - 1 + dots.length) % dots.length;
-    dots[realIndex].classList.add('active');
-  }
-
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => goToSlide(index + 1));
-  });
-
-  nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
-  prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
-
-  function startAutoScroll() {
-    autoScroll = setInterval(() => {
-      if (!isPaused) goToSlide(currentIndex + 1);
-    }, 5000);
-  }
-
-  carousel.addEventListener('mouseenter', () => isPaused = true);
-  carousel.addEventListener('mouseleave', () => isPaused = false);
-
-  carousel.addEventListener('scroll', () => {
-    const newIndex = Math.round(carousel.scrollLeft / slideWidth);
-    currentIndex = newIndex;
-
-    // Handle loop back to start
-    if (currentIndex === slides.length - 1) {
-      setTimeout(() => {
-        goToSlide(1, true);
-      }, 300);
+    // Mobile menu toggle
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('active');
     }
 
-    // Handle loop to end
-    if (currentIndex === 0) {
-      setTimeout(() => {
-        goToSlide(slides.length - 2, true);
-      }, 300);
+    // Intersection Observer for section animations
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('section');
+      
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+    });
+
+    // Carousel functionality
+    const carousel = document.getElementById('carousel');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const dots = document.querySelectorAll('#carouselDots .dot');
+
+    const slides = carousel.querySelectorAll('.promo-card');
+    const slideWidth = slides[0].offsetWidth;
+    let currentIndex = 1;
+    let autoScroll;
+    let isPaused = false;
+
+    // Initial scroll to the real first slide (after clone)
+    carousel.scrollLeft = slideWidth;
+
+    function goToSlide(index, instant = false) {
+      currentIndex = index;
+
+      carousel.scrollTo({
+        left: slideWidth * currentIndex,
+        behavior: instant ? 'auto' : 'smooth'
+      });
+
+      updateDots();
     }
 
-    updateDots();
-  });
+    function updateDots() {
+      dots.forEach(dot => dot.classList.remove('active'));
+      const realIndex = (currentIndex - 1 + dots.length) % dots.length;
+      dots[realIndex].classList.add('active');
+    }
 
-  window.addEventListener('resize', () => {
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => goToSlide(index + 1));
+    });
+
+    nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+    prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+
+    function startAutoScroll() {
+      autoScroll = setInterval(() => {
+        if (!isPaused) goToSlide(currentIndex + 1);
+      }, 5000);
+    }
+
+    carousel.addEventListener('mouseenter', () => isPaused = true);
+    carousel.addEventListener('mouseleave', () => isPaused = false);
+
+    carousel.addEventListener('scroll', () => {
+      const newIndex = Math.round(carousel.scrollLeft / slideWidth);
+      currentIndex = newIndex;
+
+      // Handle loop back to start
+      if (currentIndex === slides.length - 1) {
+        setTimeout(() => {
+          goToSlide(1, true);
+        }, 300);
+      }
+
+      // Handle loop to end
+      if (currentIndex === 0) {
+        setTimeout(() => {
+          goToSlide(slides.length - 2, true);
+        }, 300);
+      }
+
+      updateDots();
+    });
+
+    window.addEventListener('resize', () => {
+      goToSlide(currentIndex, true);
+    });
+
+    // Start
     goToSlide(currentIndex, true);
-  });
-
-  // Start
-  goToSlide(currentIndex, true);
-  startAutoScroll();
-  
-  // Page loader
-  window.addEventListener('load', function() {
-    setTimeout(function() {
-      document.querySelector('.loader-wrapper').classList.add('hide');
-    }, 500);
-  });
-</script>
-<script src="main.js"></script>
-
+    startAutoScroll();
+  </script>
+  <script src="main.js"></script>
 </body>
-
 </html>
