@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VOLDETO - Elegant Wear</title>
+  <link rel="icon" href="icon.jpg">
+  <link rel="stylesheet" href="boxicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Snipcart Styles + Script -->
+<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.css" />
+<script async src="https://cdn.snipcart.com/themes/v3.3.0/default/snipcart.js"></script>
+
+<!--  Snipcart Public API Key -->
+<div hidden id="snipcart" data-api-key="YOUR_PUBLIC_API_KEY"></div>
+
+   <style>
+    form {
+      max-width: 400px;
+      margin: 20px auto;
+      font-family: Arial, sans-serif;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input, select {
+      width: 100%;
+      padding: 6px;
+      margin-top: 4px;
+    }
+    h2, p {
+      margin-top: 20px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px;
+      width: 100%;
+      background-color: black;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo"><img  style="width: 35%; margin: 10px;" src="logo.png" alt=""></div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="catalog.html">Catalog</a>
+        <a href="contact.html">Contact</a>
+       <a href="#" class="snipcart-checkout cart-button">
+  <i class="fas fa-shopping-cart"></i> Cart (<span class="snipcart-items-count"></span>)
+</a>
+
+      </nav>
+      <div class="nav-toggle" onclick="toggleMenu()">☰</div>
+    </div>
+  </header>
+
+
+
+
+
+
+
+<section class="product-page">
+  <div class="product-container">
+
+    <!-- Product Gallery -->
+    <div class="product-gallery">
+      <div class="main-image">
+        <img src="TshirtF.jpg" alt="Main Product Image" id="currentImage">
+      </div>
+      <div class="thumbnail-row">
+        <img src="TshirtF.jpg" alt="Thumb 1" onclick="changeImage(this)">
+        <img src="TshirtB.jpg" alt="Thumb 2" onclick="changeImage(this)">
+      </div>
+    </div>
+
+    <!-- Product Details -->
+    <div class="product-info">
+      <h1>ALGERIA T-SHIRT VOLDETO</h1>
+      <p class="price">2900 DA</p>
+      <p class="description">
+       tshirt 100% en COTON , Design boxy & oversized fit .
+ </p>
+
+
+
+<form action="https://usebasin.com/f/d6a1bc760269" method="POST">
+  <!-- Disable CAPTCHA from formsubmit -->
+  <input type="hidden" name="_captcha" value="false">
+  
+  <!-- Redirect after submission -->
+  <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+<input type="hidden" name="produit" value="CHEMISE CROPPED VOLDETO">
+
+  <label for="size">Size:</label>
+  <select id="size" name="size" required>
+    <option value="">Select Size</option>
+    <option>S</option>
+    <option>M</option>
+    <option>L</option>
+    <option>XL</option>
+  </select>
+
+  <label for="nom">Nom:</label>
+  <input id="nom" name="nom" type="text" placeholder="Votre nom" required>
+
+  <label for="prenom">Prénom:</label>
+  <input id="prenom" name="prenom" type="text" placeholder="Votre prénom" required>
+
+  <label for="numero">Numéro:</label>
+  <input id="numero" name="numero" type="text" placeholder="Numéro de téléphone" required>
+
+  <label for="adresse">Adresse:</label>
+  <input id="adresse" name="adresse" type="text" placeholder="Adresse de livraison" required>
+
+  <label for="livraison">Wilaya de Livraison :</label>
+<select id="livraison" name="wilaya" required>
+  <option value="">Sélectionner une wilaya</option>
+
+  <!-- 400 DA -->
+  <option value="Alger" data-price="400">Alger (400 DA)</option>
+
+  <!-- 500 DA -->
+  <option value="Blida" data-price="500">Blida (500 DA)</option>
+  <option value="Boumerdes" data-price="500">Boumerdes (500 DA)</option>
+  <option value="Tipaza" data-price="500">Tipaza (500 DA)</option>
+
+  <!-- 600 DA -->
+  <option value="Aïn Defla" data-price="600">Aïn Defla (600 DA)</option>
+  <option value="Aïn Témouchent" data-price="600">Aïn Témouchent (600 DA)</option>
+  <option value="Annaba" data-price="600">Annaba (600 DA)</option>
+  <option value="Batna" data-price="600">Batna (600 DA)</option>
+  <option value="Béjaïa" data-price="600">Béjaïa (600 DA)</option>
+  <option value="Bordj Bou Arreridj" data-price="600">Bordj Bou Arreridj (600 DA)</option>
+  <option value="Bouira" data-price="600">Bouira (600 DA)</option>
+  <option value="Chlef" data-price="600">Chlef (600 DA)</option>
+  <option value="Constantine" data-price="600">Constantine (600 DA)</option>
+  <option value="El Tarf" data-price="600">El Tarf (600 DA)</option>
+  <option value="Guelma" data-price="600">Guelma (600 DA)</option>
+  <option value="Jijel" data-price="600">Jijel (600 DA)</option>
+  <option value="Khenchela" data-price="600">Khenchela (600 DA)</option>
+  <option value="Mascara" data-price="600">Mascara (600 DA)</option>
+  <option value="Médéa" data-price="600">Médéa (600 DA)</option>
+  <option value="Mila" data-price="600">Mila (600 DA)</option>
+  <option value="Mostaganem" data-price="600">Mostaganem (600 DA)</option>
+  <option value="M'sila" data-price="600">M'sila (600 DA)</option>
+  <option value="Oran" data-price="600">Oran (600 DA)</option>
+  <option value="Oum El Bouaghi" data-price="600">Oum El Bouaghi (600 DA)</option>
+  <option value="Relizane" data-price="600">Relizane (600 DA)</option>
+  <option value="Saïda" data-price="600">Saïda (600 DA)</option>
+  <option value="Sétif" data-price="600">Sétif (600 DA)</option>
+  <option value="Sidi Bel Abbès" data-price="600">Sidi Bel Abbès (600 DA)</option>
+  <option value="Skikda" data-price="600">Skikda (600 DA)</option>
+  <option value="Souk Ahras" data-price="600">Souk Ahras (600 DA)</option>
+  <option value="Tiaret" data-price="600">Tiaret (600 DA)</option>
+  <option value="Tissemsilt" data-price="600">Tissemsilt (600 DA)</option>
+  <option value="Tizi Ouzou" data-price="600">Tizi Ouzou (600 DA)</option>
+  <option value="Tlemcen" data-price="600">Tlemcen (600 DA)</option>
+
+  <!-- 750 DA -->
+  <option value="Biskra" data-price="750">Biskra (750 DA)</option>
+  <option value="Djelfa" data-price="750">Djelfa (750 DA)</option>
+  <option value="El Oued" data-price="750">El Oued (750 DA)</option>
+  <option value="Ghardaïa" data-price="750">Ghardaïa (750 DA)</option>
+  <option value="Laghouat" data-price="750">Laghouat (750 DA)</option>
+  <option value="Ouargla" data-price="750">Ouargla (750 DA)</option>
+  <option value="Tébessa" data-price="750">Tébessa (750 DA)</option>
+
+  <!-- 1250 DA -->
+  <option value="Naâma" data-price="1250">Naâma (1250 DA)</option>
+  <option value="Béchar" data-price="1250">Béchar (1250 DA)</option>
+  <option value="El Bayadh" data-price="1250">El Bayadh (1250 DA)</option>
+
+  <!-- 1450 DA -->
+  <option value="Adrar" data-price="1450">Adrar (1450 DA)</option>
+  <option value="Tindouf" data-price="1450">Tindouf (1450 DA)</option>
+  <option value="Illizi" data-price="1450">Illizi (1450 DA)</option>
+  <option value="Tamanrasset" data-price="1450">Tamanrasset (1450 DA)</option>
+</select>
+
+
+
+  <h2>Total</h2>
+  <p id="total">4900 DA</p>
+
+  <!-- This field will hold the total amount -->
+  <input type="hidden" name="total" id="totalInput" value="4900">
+
+  <button type="submit">Confirmer la commande</button>
+</form>
+<script>
+  const basePrice = 4900;
+  const livraisonSelect = document.getElementById('livraison');
+  const totalDisplay = document.getElementById('total');
+  const totalInput = document.getElementById('totalInput');
+
+  livraisonSelect.addEventListener('change', function () {
+    const selectedOption = livraisonSelect.options[livraisonSelect.selectedIndex];
+    const livraisonCost = parseInt(selectedOption.getAttribute('data-price')) || 0;
+    const total = basePrice + livraisonCost;
+    totalDisplay.textContent = `${total} DA`;
+    totalInput.value = total;
+  });
+</script>
+
+
+
+     
+
+
+        <a href="#catalog" class="back-link">← Back to Catalog</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <img style="width: 35%; margin: 10px;"  src="logo.png" alt="">
+      <p>Elegant Empire — crafted for bold comfort and timeless minimalism.</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#lookbook">Lookbook</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-social">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 VOLDETO. All rights reserved.</p>
+  </div>
+</footer>
+
+
+
+<script>
+  function changeImage(thumbnail) {
+    const mainImage = document.getElementById("currentImage");
+    mainImage.src = thumbnail.src;
+  }
+</script>
+
+
+
+  <script>
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    }
+  </script>
+
+
+</body>
+</html>
+
+
