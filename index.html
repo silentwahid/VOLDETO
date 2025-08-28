@@ -300,6 +300,111 @@
       visibility: hidden;
       pointer-events: none;
     }
+
+
+
+
+    /* Overlay */
+  .popup-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,.75);
+    display: none; /* hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 3000; /* above loader */
+    animation: fadeIn .4s ease;
+  }
+
+  .popup-box {
+    position: relative;
+    background: #fff;
+    border-radius: 14px;
+    max-width: 90%;
+    max-height: 90%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    animation: scaleIn .4s ease;
+    overflow: hidden;
+  }
+
+  /* Maintain 4:5 aspect ratio */
+  .popup-img-wrapper {
+    aspect-ratio: 4 / 5;
+    width: min(400px, 80vw); /* limit width */
+    height: auto;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+
+  .popup-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background: #111;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    line-height: 36px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,.3);
+    z-index: 5;
+  }
+
+  .close-btn:hover {
+    background: #c00;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  @keyframes scaleIn {
+    from {transform: scale(0.8); opacity:0;}
+    to {transform: scale(1); opacity:1;}
+  }
+
+
+
+
+  .promo-ruban {
+    position: fixed;
+    bottom: 80; /* you can change to top:0 */
+    left: 0;
+    width: 100%;
+    background: #111;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    z-index: 2;
+    border-top: 2px solid #fff;
+  }
+
+  .promo-text {
+    display: inline-block;
+    padding: 10px 0;
+    animation: scroll-left 20s linear infinite;
+  }
+
+  @keyframes scroll-left {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
   </style>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -323,6 +428,32 @@
       <div class="nav-toggle" onclick="toggleMenu()">☰</div>
     </div>
   </header>
+<!-- Promo Ruban -->
+<div class="promo-ruban">
+  <div class="promo-text">
+    2 ALGERIAN WORLD T-SHIRT VOLDETO for only 5000 DA &nbsp;•&nbsp;
+    2 ALGERIAN WORLD T-SHIRT VOLDETO for only 5000 DA &nbsp;•&nbsp;
+    2 ALGERIAN WORLD T-SHIRT VOLDETO for only 5000 DA &nbsp;•&nbsp;
+  </div>
+</div>
+
+
+
+
+
+
+<!-- POPUP IMAGE -->
+<div id="entryPopup" class="popup-overlay">
+  <div class="popup-box">
+    <span class="close-btn" id="closePopup">&times;</span>
+    <div class="popup-img-wrapper">
+      <img src="T SHIRT PROMO.jpg" alt="Promo" />
+    </div>
+  </div>
+</div>
+
+
+
 
   <!-- HERO SECTION -->
   <section class="hero-section" id="home">
@@ -356,6 +487,14 @@
           <p class="product-name">ALGERIAN WORLD T-SHIRT VOLDETO</p>
           <p class="colors">Tshirt 100% en COTON </p>
           <p class="price"><span>2900 DA</span></p>
+        </a>
+      </div>
+      <div class="product-card">
+        <a href="002.html">
+          <img src="5.png" alt="VOLDETO Blue Hoodie">
+          <p class="product-name">ALGERIA TSHIRT VOLDETO</p>
+          <p class="colors">Chemise 100% en COTON</p>
+          <p class="price"><span>3100 DA</span></p>
         </a>
       </div> 
     </div>
@@ -613,7 +752,30 @@
     goToSlide(currentIndex, true);
     startAutoScroll();
   </script>
+
+  
+
+<script>
+  // Show popup AFTER loader finishes
+  document.addEventListener("DOMContentLoaded", function(){
+    const loaderScreen = document.querySelector('.loader-screen');
+    const popup = document.getElementById("entryPopup");
+    const closeBtn = document.getElementById("closePopup");
+
+    // Wait for loader animation to complete (same 4s you already set)
+    setTimeout(() => {
+      popup.style.display = "flex";
+    }, 4200); // loader (4000ms) + a little buffer
+
+    // Close popup
+    closeBtn.addEventListener("click", () => popup.style.display = "none");
+
+    // Close if click outside box
+    popup.addEventListener("click", (e) => {
+      if(e.target.id === "entryPopup") popup.style.display = "none";
+    });
+  });
+</script>
   <script src="main.js"></script>
 </body>
-
 </html>
