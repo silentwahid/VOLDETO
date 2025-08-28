@@ -100,16 +100,32 @@
   
   <!-- Redirect after submission -->
   <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
-<input type="hidden" name="produit" value="ALGERIAN WORLD T-SHIRT VOLDETO">
+  <input type="hidden" name="produit" value="ALGERIAN WORLD T-SHIRT VOLDETO">
 
-  <label for="size">Size:</label>
-  <select id="size" name="size" required>
-    <option value="">Select Size</option>
+  <!-- Quantity Selection -->
+  <label for="quantity">Quantité:</label>
+  <select id="quantity" name="quantity" required onchange="updateQuantity()">
+    <option value="1" selected>1 pièce (2900 DA)</option>
+    <option value="2">2 pièces (5000 DA !!!)</option>
+    <option value="3">3 pièces (8700 DA)</option>
+    <option value="4">4 pièces (11600 DA)</option>
+    <option value="5">5 pièces (14500 DA)</option>
+  </select>
+
+  <!-- Size for first item -->
+  <label for="size1">Taille pour la première pièce:</label>
+  <select id="size1" name="size1" required>
+    <option value="">Sélectionner une taille</option>
     <option>S</option>
     <option>M</option>
     <option>L</option>
     <option>XL</option>
   </select>
+
+  <!-- Container for additional size selections (hidden by default) -->
+  <div id="additionalSizes" style="display: none;">
+    <!-- Additional sizes will be added here by JavaScript -->
+  </div>
 
   <label for="nom">Nom:</label>
   <input id="nom" name="nom" type="text" placeholder="Votre nom" required>
@@ -124,12 +140,11 @@
   <input id="adresse" name="adresse" type="text" placeholder="Adresse de livraison" required>
 
   <label for="livraison">Wilaya de Livraison :</label>
-<select id="livraison" name="wilaya" required>
-  <option value="">Sélectionner une wilaya</option>
-
-  <!-- 400 DA -->
-  <option value="Alger" data-price="400">Alger (400 DA)</option>
-
+  <select id="livraison" name="wilaya" required onchange="calculateTotal()">
+    <!-- Wilaya options remain the same -->
+    <option value="">Sélectionner une wilaya</option>
+    <option value="Alger" data-price="400">Alger (400 DA)</option>
+   
   <!-- 500 DA -->
   <option value="Blida" data-price="500">Blida (500 DA)</option>
   <option value="Boumerdes" data-price="500">Boumerdes (500 DA)</option>
@@ -186,9 +201,8 @@
   <option value="Tindouf" data-price="1450">Tindouf (1450 DA)</option>
   <option value="Illizi" data-price="1450">Illizi (1450 DA)</option>
   <option value="Tamanrasset" data-price="1450">Tamanrasset (1450 DA)</option>
-</select>
 
-
+  </select>
 
   <h2>Total</h2>
   <p id="total">2900 DA</p>
@@ -198,20 +212,6 @@
 
   <button type="submit">Confirmer la commande</button>
 </form>
-<script>
-  const basePrice = 2900;
-  const livraisonSelect = document.getElementById('livraison');
-  const totalDisplay = document.getElementById('total');
-  const totalInput = document.getElementById('totalInput');
-
-  livraisonSelect.addEventListener('change', function () {
-    const selectedOption = livraisonSelect.options[livraisonSelect.selectedIndex];
-    const livraisonCost = parseInt(selectedOption.getAttribute('data-price')) || 0;
-    const total = basePrice + livraisonCost;
-    totalDisplay.textContent = `${total} DA`;
-    totalInput.value = total;
-  });
-</script>
 
 
 
@@ -265,6 +265,90 @@
 </footer>
 
 
+<script>
+  const basePrice = 2900;
+  const specialPriceForTwo = 5000;
+  const livraisonSelect = document.getElementById('livraison');
+  const quantitySelect = document.getElementById('quantity');
+  const totalDisplay = document.getElementById('total');
+  const totalInput = document.getElementById('totalInput');
+  const additionalSizesContainer = document.getElementById('additionalSizes');
+
+  // Function to update the form when quantity changes
+  function updateQuantity() {
+    const quantity = parseInt(quantitySelect.value);
+    
+    // Update additional size selections
+    updateSizeSelections(quantity);
+    
+    // Calculate total
+    calculateTotal();
+  }
+
+  // Function to update size selection fields based on quantity
+  function updateSizeSelections(quantity) {
+    // Clear previous additional sizes
+    additionalSizesContainer.innerHTML = '';
+    
+    // Show/hide container based on quantity
+    if (quantity > 1) {
+      additionalSizesContainer.style.display = 'block';
+      
+      // Add size selection for each additional item
+      for (let i = 2; i <= quantity; i++) {
+        const sizeLabel = document.createElement('label');
+        sizeLabel.textContent = `Taille pour la ${i}ème pièce:`;
+        sizeLabel.htmlFor = `size${i}`;
+        
+        const sizeSelect = document.createElement('select');
+        sizeSelect.id = `size${i}`;
+        sizeSelect.name = `size${i}`;
+        sizeSelect.required = true;
+        
+        // Add options to the select
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '';
+        defaultOption.textContent = 'Sélectionner une taille';
+        sizeSelect.appendChild(defaultOption);
+        
+        ['S', 'M', 'L', 'XL'].forEach(size => {
+          const option = document.createElement('option');
+          option.value = size;
+          option.textContent = size;
+          sizeSelect.appendChild(option);
+        });
+        
+        additionalSizesContainer.appendChild(sizeLabel);
+        additionalSizesContainer.appendChild(sizeSelect);
+      }
+    } else {
+      additionalSizesContainer.style.display = 'none';
+    }
+  }
+
+  // Function to calculate total price
+  function calculateTotal() {
+    const quantity = parseInt(quantitySelect.value);
+    const selectedOption = livraisonSelect.options[livraisonSelect.selectedIndex];
+    const livraisonCost = parseInt(selectedOption.getAttribute('data-price')) || 0;
+    
+    // Calculate product price based on quantity
+    let productPrice;
+    if (quantity === 2) {
+      productPrice = specialPriceForTwo;
+    } else {
+      productPrice = basePrice * quantity;
+    }
+    
+    const total = productPrice + livraisonCost;
+    totalDisplay.textContent = `${total} DA`;
+    totalInput.value = total;
+  }
+
+  // Initialize event listeners
+  livraisonSelect.addEventListener('change', calculateTotal);
+  quantitySelect.addEventListener('change', updateQuantity);
+</script>
 
 <script>
   function changeImage(thumbnail) {
@@ -284,5 +368,4 @@
 
 </body>
 </html>
-
 
