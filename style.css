@@ -67,12 +67,19 @@ section{
 
 
 
-
 /* HERO SECTION */
 .hero-section {
-  position: relative;
+  padding: 80px 20px;
   height: 95vh;
-  overflow: hidden;
+  background: center center/cover  no-repeat url("IMG_0581.JPG");
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
 }
 
 /* Slider */
@@ -143,13 +150,6 @@ section{
   to { width: 100%; }
 }
 
-.container {
-  max-width: 1200px;
-  margin: auto;
-  position: absolute;
-  bottom: 15%;
-  left: 10%;
-}
 
 .hero-text {
   padding: 20px;
@@ -414,7 +414,7 @@ section{
 
 
 .promo-section {
-  background: center center/cover  no-repeat url("SUMMER\ LOOK.jpg"); 
+  background: center center/cover  no-repeat url("IMG_0581.jpg"); 
   padding: 80px 20px;
 }
 
@@ -496,6 +496,8 @@ section{
 
 
 .carousel-wrapper {
+  width: 100%;
+  height: 85vh;
   padding: 60px 20px;
   background-color: #fefefe;
 }
